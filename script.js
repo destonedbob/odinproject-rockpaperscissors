@@ -20,10 +20,10 @@ function playRound(playerSelection, computerSelection) {
                (playerSelectionCleaned == 'scissors' && computerSelection == 'paper')
     ) {
         console.log(`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`)
-        return True
+        return true
     } else {
         console.log(`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`)
-        return False
+        return false
     }
 }
 
@@ -46,8 +46,15 @@ for (let i = 0; i < numOfRounds; i++) {
     let currCompMove = getComputerChoice();
 
     // play round
-    playRound(currPlayerMove, currCompMove);
+    let isPlayerVictory = playRound(currPlayerMove, currCompMove);
 
+    if (isPlayerVictory) {
+        playerScore++;
+    } else {
+        CompScore++;
+    }
+
+    console.log(`Current Score: \n\tPlayer: ${playerScore}\n\tComputer: ${CompScore}`)
     // add 1 to winner's score
     console.log(`End of Round ${i+1}`)
 }
