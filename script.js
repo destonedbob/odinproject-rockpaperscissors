@@ -14,16 +14,17 @@ function playRound(playerSelection, computerSelection) {
     let computerSelectionCleaned = computerSelection.toLowerCase();
 
     if (playerSelectionCleaned === computerSelectionCleaned) {
-        return "Draw!"
+        alert(`Draw!`)
+        return 'draw'
     } else if ((playerSelectionCleaned == 'rock' && computerSelection == 'scissors') ||
                (playerSelectionCleaned == 'paper' && computerSelection == 'rock') ||
                (playerSelectionCleaned == 'scissors' && computerSelection == 'paper')
     ) {
-        console.log(`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`)
-        return true
+        alert(`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`)
+        return 'win'
     } else {
-        console.log(`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`)
-        return false
+        alert(`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`)
+        return 'lose'
     }
 }
 
@@ -34,10 +35,9 @@ let CompScore = 0;
 
 // Loop through N times to play N rounds
 for (let i = 0; i < numOfRounds; i++) {
-    console.log(`Round ${i+1}`);
 
     // In each time, prompt user for a move (while move is not valid, repeat till it is)
-    let currPlayerMove = prompt('Select a move by typing "rock", "paper", or "scissors"').toLowerCase();
+    let currPlayerMove = prompt(`Round ${i+1} of ${numOfRounds}. \nSelect a move by typing "rock", "paper", or "scissors"`).toLowerCase();
     while (!['rock', 'paper', 'scissors'].includes(currPlayerMove)) {
         currPlayerMove = prompt('Invalid Move! Select a move by typing "rock", "paper", or "scissors"').toLowerCase();
     }
@@ -46,13 +46,13 @@ for (let i = 0; i < numOfRounds; i++) {
     let currCompMove = getComputerChoice();
 
     // play round
-    let isPlayerVictory = playRound(currPlayerMove, currCompMove);
+    let roundState = playRound(currPlayerMove, currCompMove);
 
-    if (isPlayerVictory) {
+    if (roundState == 'win') {
         playerScore++;
-    } else {
+    } else if (roundState == 'lose') {
         CompScore++;
-    }
+    } //else draw and dont increment.
 
     console.log(`Current Score: \n\tPlayer: ${playerScore}\n\tComputer: ${CompScore}`)
     // add 1 to winner's score
