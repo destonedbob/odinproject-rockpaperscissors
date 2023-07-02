@@ -54,11 +54,18 @@ for (let i = 0; i < numOfRounds; i++) {
         CompScore++;
     } //else draw and dont increment.
 
-    console.log(`Current Score: \n\tPlayer: ${playerScore}\n\tComputer: ${CompScore}`)
+    console.log(`Current Score: \n\tPlayer: ${playerScore}\n\tComputer: ${CompScore}`);
     // add 1 to winner's score
-    console.log(`End of Round ${i+1}`)
+    console.log(`End of Round ${i+1}`);
 }
 // Declare winner
+if (playerScore > CompScore) {
+    alert("You have won the game!");
+} else if (CompScore > playerScore) {
+    alert("You lost the game! Try again next time");
+} else {
+    alert ("The game has ended in a draw!")
+}
 
 
 
