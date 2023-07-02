@@ -14,16 +14,16 @@ function playRound(playerSelection, computerSelection) {
     let computerSelectionCleaned = computerSelection.toLowerCase();
 
     if (playerSelectionCleaned === computerSelectionCleaned) {
-        alert(`Draw!`)
+        console.log(`Draw!`)
         return 'draw'
     } else if ((playerSelectionCleaned == 'rock' && computerSelection == 'scissors') ||
                (playerSelectionCleaned == 'paper' && computerSelection == 'rock') ||
                (playerSelectionCleaned == 'scissors' && computerSelection == 'paper')
     ) {
-        alert(`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`)
+        console.log(`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`)
         return 'win'
     } else {
-        alert(`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`)
+        console.log(`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`)
         return 'lose'
     }
 }
@@ -61,11 +61,11 @@ function game() {
     }
     // Declare winner
     if (playerScore > CompScore) {
-        alert("You have won the game!");
+        console.log("You have won the game!");
     } else if (CompScore > playerScore) {
-        alert("You lost the game! Try again next time");
+        console.log("You lost the game! Try again next time");
     } else {
-        alert ("The game has ended in a draw!")
+        console.log ("The game has ended in a draw!")
     }
 }
 
