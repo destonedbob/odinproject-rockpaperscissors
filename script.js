@@ -19,32 +19,39 @@ function playRound(playerSelection, computerSelection) {
                (playerSelectionCleaned == 'paper' && computerSelection == 'rock') ||
                (playerSelectionCleaned == 'scissors' && computerSelection == 'paper')
     ) {
-        return [`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`, True]
+        console.log(`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`)
+        return True
     } else {
-        return [`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`, False]
+        console.log(`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`)
+        return False
     }
 }
 
-// Play game 5 times
+// Initialize player and computer score to 0
+const numOfRounds = 5
 let playerScore = 0;
 let CompScore = 0;
-for (let i = 0; i < 1; i++) {
-    // Keep score
-    // Prompt users
+
+// Loop through N times to play N rounds
+for (let i = 0; i < numOfRounds; i++) {
+    console.log(`Round ${i+1}`);
+
+    // In each time, prompt user for a move (while move is not valid, repeat till it is)
     let currPlayerMove = prompt('Select a move by typing "rock", "paper", or "scissors"').toLowerCase();
     while (!['rock', 'paper', 'scissors'].includes(currPlayerMove)) {
         currPlayerMove = prompt('Invalid Move! Select a move by typing "rock", "paper", or "scissors"').toLowerCase();
     }
 
-    console.log(`End of Round ${i+1}`)
-    // Initialize player and computer score to 0
-    // Loop through 5 times
-    // In each time, prompt user for a move (while move is not valid, repeat till it is)
     // get computer's move
+    let currCompMove = getComputerChoice();
+
     // play round
+    playRound(currPlayerMove, currCompMove);
+
     // add 1 to winner's score
-    // Declare winner
+    console.log(`End of Round ${i+1}`)
 }
+// Declare winner
 
 
 
