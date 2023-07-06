@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel='stylesheet' href="./styles.css">
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <div class="player-score-tracker">Player Score: 0 / 5</div>
-    <div class="comp-score-tracker">Computer Score: 0 / 5</div>
-    <button data-key="rock">Rock</button>
-    <button data-key="paper">Paper</button>
-    <button data-key="scissors">Scissors</button>
-    <div class="round-result"></div>
-    <div class="game-result"></div>
+    <div class="header">
+        <h1>Rock Paper Scissors</h1>
+        <div class="score-tracker">
+            <div class="player-score-tracker">Player Score: 0 / 5</div>
+            <div class="comp-score-tracker">Computer Score: 0 / 5</div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button data-key="rock">Rock</button>
+        <button data-key="paper">Paper</button>
+        <button data-key="scissors">Scissors</button>
+    </div>
+    <div class="results">
+        <div class="round-result"></div>
+        <div class="game-result"></div>
+    </div>
 </body>
 </html>
