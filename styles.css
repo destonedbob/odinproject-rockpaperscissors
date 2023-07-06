@@ -1,0 +1,53 @@
+* {
+    font-family: sans-serif;
+    margin: 10px 0.75vw;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+h1 {
+    font-size: 48px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+}
+
+.score-tracker {
+    display:flex;
+    flex-direction: column;
+    font-size: 36px;
+}
+
+.buttons {
+    align-self: center;
+    display: flex;
+    margin-bottom: 5vh;
+
+}
+
+button {
+    font-size: 75px;
+    padding: 0.5em 1em;
+    border-radius: 10px;;
+}
+
+.results {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 36px;
+    gap:25px;
+}
+
+.game-result {
+    font-weight: bold;
+    font-size: 48px;
+}
