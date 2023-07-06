@@ -14,16 +14,16 @@ function playRound(playerSelection, computerSelection) {
     let computerSelectionCleaned = computerSelection.toLowerCase();
 
     if (playerSelectionCleaned === computerSelectionCleaned) {
-        console.log(`Draw!`)
+        roundResult.textContent = `Draw!`;
         return 'draw'
     } else if ((playerSelectionCleaned == 'rock' && computerSelection == 'scissors') ||
                (playerSelectionCleaned == 'paper' && computerSelection == 'rock') ||
                (playerSelectionCleaned == 'scissors' && computerSelection == 'paper')
     ) {
-        console.log(`You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`)
+        roundResult.textContent = `You Win the Round! ${titleCase(playerSelectionCleaned)} beats ${titleCase(computerSelection)}`;
         return 'win'
     } else {
-        console.log(`You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`)
+        roundResult.textContent = `You Lose the Round! ${titleCase(computerSelection)} beats ${titleCase(playerSelectionCleaned)}`;
         return 'lose'
     }
 }
@@ -69,4 +69,16 @@ function game() {
     }
 }
 
-game();
+// game();
+
+function buttonSelection(e) {
+    playRound(this.getAttribute('data-key'), getComputerChoice());
+}
+
+// Get all buttons
+const buttons = document.querySelectorAll('button');
+const roundResult = document.querySelector('.round-result');
+// Add event listener click to all buttons
+Array.from(buttons).forEach((button) => {
+    button.addEventListener('click', buttonSelection);
+})
