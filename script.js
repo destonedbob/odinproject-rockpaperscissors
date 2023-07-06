@@ -28,56 +28,49 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+function game(playerChoice) {
     // Initialize player and computer score to 0
-    const numOfRounds = 5
-    let playerScore = 0;
-    let CompScore = 0;
+    const numOfRounds = 5;
 
-    // Loop through N times to play N rounds
-    for (let i = 0; i < numOfRounds; i++) {
+    let roundState = playRound(playerChoice, getComputerChoice());
 
-        // In each time, prompt user for a move (while move is not valid, repeat till it is)
-        let currPlayerMove = prompt(`Round ${i+1} of ${numOfRounds}. \nSelect a move by typing "rock", "paper", or "scissors"`).toLowerCase();
-        while (!['rock', 'paper', 'scissors'].includes(currPlayerMove)) {
-            currPlayerMove = prompt('Invalid Move! Select a move by typing "rock", "paper", or "scissors"').toLowerCase();
+    if (roundState == 'win') {
+        playerScore++;
+        playerScoreTracker.textContent = `Player Score: ${playerScore} / 5`
+
+    } else if (roundState == 'lose') {
+        compScore++;
+        compScoreTracker.textContent = `Computer Score: ${compScore} / 5`
+
+    } //else draw and dont increment.
+
+    if (playerScore === 5 || compScore === 5) {
+        // Declare winner
+        if (playerScore > compScore) {
+            gameResult.textContent = "GAME OVER! You have won the game!"
+            buttons.forEach(button => button.disabled = true)
+        } else if (compScore > playerScore) {
+            gameResult.textContent = "GAME OVER! You Lost! Try again next time"
+            buttons.forEach(button => button.disabled = true)
         }
-
-        // get computer's move
-        let currCompMove = getComputerChoice();
-
-        // play round
-        let roundState = playRound(currPlayerMove, currCompMove);
-
-        if (roundState == 'win') {
-            playerScore++;
-        } else if (roundState == 'lose') {
-            CompScore++;
-        } //else draw and dont increment.
-
-        console.log(`Current Score: \n\tPlayer: ${playerScore}\n\tComputer: ${CompScore}`);
-        // add 1 to winner's score
-        console.log(`End of Round ${i+1}`);
-    }
-    // Declare winner
-    if (playerScore > CompScore) {
-        console.log("You have won the game!");
-    } else if (CompScore > playerScore) {
-        console.log("You lost the game! Try again next time");
-    } else {
-        console.log ("The game has ended in a draw!")
     }
 }
 
 // game();
 
-function buttonSelection(e) {
-    playRound(this.getAttribute('data-key'), getComputerChoice());
+function buttonSelection() {
+    game(this.getAttribute('data-key'));
 }
 
 // Get all buttons
 const buttons = document.querySelectorAll('button');
 const roundResult = document.querySelector('.round-result');
+const gameResult = document.querySelector('.game-result')
+const playerScoreTracker = document.querySelector('.player-score-tracker');
+const compScoreTracker = document.querySelector('.comp-score-tracker');
+let playerScore = 0;
+let compScore = 0;
+
 // Add event listener click to all buttons
 Array.from(buttons).forEach((button) => {
     button.addEventListener('click', buttonSelection);
