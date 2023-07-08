@@ -39,12 +39,12 @@ button {
     border-radius: 10px;
 }
 
-button:hover {
+.active-button:hover {
     background-color:grey;
     color:white;
 }
 
-button:active {
+.active-button:active {
     color:black;
     background-color: white;
 }

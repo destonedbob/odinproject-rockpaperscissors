@@ -48,11 +48,15 @@ function game(playerChoice) {
         // Declare winner
         if (playerScore > compScore) {
             gameResult.textContent = "GAME OVER! You have won the game!"
-            buttons.forEach(button => button.disabled = true)
         } else if (compScore > playerScore) {
             gameResult.textContent = "GAME OVER! You Lost! Try again next time"
-            buttons.forEach(button => button.disabled = true)
         }
+
+        // Deactive buttons
+        buttons.forEach(button => {
+            button.disabled = true;
+            button.classList.toggle("active-button");
+        })
     }
 }
 
