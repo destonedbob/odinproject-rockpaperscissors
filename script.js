@@ -53,10 +53,13 @@ function game(playerChoice) {
         }
 
         // Deactive buttons
-        buttons.forEach(button => {
+        gameButtons.forEach(button => {
             button.disabled = true;
             button.classList.toggle("active-button");
         })
+
+        // Reveal Reset Button
+        resetButton.style.display= "block";
     }
 }
 
@@ -66,16 +69,34 @@ function buttonSelection() {
     game(this.getAttribute('data-key'));
 }
 
+function resetGame() {
+    // Reactivate buttons
+    gameButtons.forEach(button => {
+        button.disabled = false;
+        gameResult.textContent = "";
+        button.classList.toggle("active-button");
+        playerScore = 0;
+        playerScoreTracker.textContent = `Player Score: ${playerScore} / 5`;
+        compScore = 0;
+        compScoreTracker.textContent = `Computer Score: ${compScore} / 5`;
+        resetButton.style.display= "none";
+    })
+}
+
 // Get all buttons
-const buttons = document.querySelectorAll('button');
+const gameButtons = document.querySelectorAll('.game-button');
 const roundResult = document.querySelector('.round-result');
 const gameResult = document.querySelector('.game-result')
 const playerScoreTracker = document.querySelector('.player-score-tracker');
 const compScoreTracker = document.querySelector('.comp-score-tracker');
+const resetButton = document.querySelector('#reset-button');
 let playerScore = 0;
 let compScore = 0;
 
-// Add event listener click to all buttons
-Array.from(buttons).forEach((button) => {
+// Add event listener click to all game buttons
+Array.from(gameButtons).forEach((button) => {
     button.addEventListener('click', buttonSelection);
 })
+
+// Add event listener click to reset Button
+resetButton.addEventListener('click', resetGame);
