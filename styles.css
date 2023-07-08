@@ -34,9 +34,12 @@ h1 {
 }
 
 button {
-    font-size: 75px;
     padding: 0.5em 1em;
     border-radius: 10px;
+}
+
+.game-button {
+    font-size: 75px;
 }
 
 .active-button:hover {
@@ -61,4 +64,19 @@ button {
 .game-result {
     font-weight: bold;
     font-size: 48px;
+}
+
+#reset-button {
+    display:none;
+    font-size: 24px;
+}
+
+#reset-button:hover {
+    background-color:grey;
+    color:white;
+}
+
+#reset-button:active {
+    color:black;
+    background-color: white;
 }
