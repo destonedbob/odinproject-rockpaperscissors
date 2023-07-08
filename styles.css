@@ -10,12 +10,13 @@ body {
 
 
 h1 {
-    font-size: 48px;
+    font-size: 65px;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 10vh;
 }
 
@@ -35,7 +36,17 @@ h1 {
 button {
     font-size: 75px;
     padding: 0.5em 1em;
-    border-radius: 10px;;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color:grey;
+    color:white;
+}
+
+button:active {
+    color:black;
+    background-color: white;
 }
 
 .results {
